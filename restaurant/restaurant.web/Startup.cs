@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using restaurant.web.Services;
+using restaurant.web.Services.IService;
 
 namespace restaurant.web
 {
@@ -23,6 +25,10 @@ namespace restaurant.web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient<IProductServices, ProductService>();
+            SD.ProductAPIBase = Configuration.GetSection("ServiceUrls:ProductAPI").Value;
+
+            services.AddScoped<IProductServices, ProductService>();
             services.AddControllersWithViews();
         }
 
