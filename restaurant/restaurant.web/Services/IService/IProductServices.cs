@@ -4,7 +4,7 @@ using restaurant.web.Models;
 
 namespace restaurant.web.Services.IService
 {
-    public interface IProductServices
+    public interface IProductServices : IBaseService
     {
         Task<T> GetAllProductsAsync<T>();
         Task<T> GetAProductByIdAsync<T>(int id);
