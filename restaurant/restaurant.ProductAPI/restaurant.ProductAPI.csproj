@@ -15,6 +15,9 @@
     <None Remove="AutoMapper" />
     <None Remove="DbContext\" />
     <None Remove="Models\" />
+    <None Remove="Repository\" />
+    <None Remove="Models\Dtos\" />
+    <None Remove="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
@@ -32,5 +35,8 @@
   <ItemGroup>
     <Folder Include="DbContexts\" />
     <Folder Include="Models\" />
+    <Folder Include="Repository\" />
+    <Folder Include="Models\Dtos\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 </Project>

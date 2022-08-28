@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using restaurant.ProductAPI.DbContexts;
+using restaurant.ProductAPI.Repository;
 
 namespace restaurant.ProductAPI
 {
@@ -31,6 +33,13 @@ namespace restaurant.ProductAPI
             {
                 options.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
+
+            IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
+            services.AddSingleton(mapper);
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddScoped<IProductRepository, ProductRepository>();
+
             services.AddControllers();
         }
 
