@@ -26,7 +26,7 @@ namespace restaurant.web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpClient<IProductServices, ProductService>();
-            SD.ProductAPIBase = Configuration.GetSection("ServiceUrls:ProductAPI").Value;
+            SD.ProductAPIBase = Configuration["ServiceUrls:ProductAPI"];
 
             services.AddScoped<IProductServices, ProductService>();
             services.AddControllersWithViews();
