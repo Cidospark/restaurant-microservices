@@ -39,6 +39,7 @@ namespace restaurant.ProductAPI
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddSwaggerGen();
 
             services.AddControllers();
         }
@@ -61,6 +62,9 @@ namespace restaurant.ProductAPI
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(x => x.SwaggerEndpoint("v1/swagger.json", "V1 Docs"));
         }
     }
 }
